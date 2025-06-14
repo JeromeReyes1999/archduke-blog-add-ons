@@ -1,0 +1,79 @@
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/latest-blogs/style.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+.wp-block-create-block-latest-blogs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: 1px solid red;
+}
+.wp-block-create-block-latest-blogs .row {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+}
+.wp-block-create-block-latest-blogs .row-1 {
+  display: block;
+}
+.wp-block-create-block-latest-blogs .row-1 .featured-img-container .featured-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wp-block-create-block-latest-blogs .row-2 {
+  flex-wrap: wrap;
+}
+.wp-block-create-block-latest-blogs .row-2 .categories {
+  flex: 1;
+  max-width: 200px;
+}
+.wp-block-create-block-latest-blogs .row-2 .categories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.wp-block-create-block-latest-blogs .row-2 .categories li {
+  background-color: #eee;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.wp-block-create-block-latest-blogs .row-2 .content {
+  flex: 2;
+}
+.wp-block-create-block-latest-blogs .row-2 .content .title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+.wp-block-create-block-latest-blogs .row-2 .content .title a {
+  color: inherit;
+  text-decoration: none;
+}
+.wp-block-create-block-latest-blogs .row-2 .content .title a:hover {
+  text-decoration: underline;
+}
+.wp-block-create-block-latest-blogs .row-2 .content .date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+.wp-block-create-block-latest-blogs .row-2 .content .excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .wp-block-create-block-latest-blogs .row-2 {
+    flex-direction: column;
+  }
+  .wp-block-create-block-latest-blogs .row-2 .categories,
+  .wp-block-create-block-latest-blogs .row-2 .content {
+    max-width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/
