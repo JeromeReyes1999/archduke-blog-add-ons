@@ -80,7 +80,7 @@ function archduke_blog_add_ons_add_read_time_meta( $post_id ) {
 
     $word_count = str_word_count( strip_tags( $post->post_content ) );
     $words_per_minute = 200;
-    $read_time = round( $word_count / $words_per_minute, 2 ); // decimal with 2 digits
+    $read_time = round( $word_count / $words_per_minute, 2 );
 
     update_post_meta( $post_id, 'read_time', $read_time );
 
@@ -104,39 +104,51 @@ function archduke_blog_add_ons_backfill_read_time() {
 
         $word_count = str_word_count( strip_tags( $post->post_content ) );
         $words_per_minute = 200;
-        $read_time = round( $word_count / $words_per_minute, 2 ); // same here
+        $read_time = round( $word_count / $words_per_minute, 2 );
 
         update_post_meta( $post_id, 'read_time', $read_time );
     }
 }
 register_activation_hook( __FILE__, 'archduke_blog_add_ons_backfill_read_time' );
 
-function manage_block_templates( $query_result, $query, $template_type ) {
-    $theme         = wp_get_theme();
-    $template_dir  = plugin_dir_path( __FILE__ ) . 'templates';
-    $template_files = glob( $template_dir . '*.html' );
+function register_custom_templates() {
+    $base_dir = plugin_dir_path(__FILE__) . 'templates/';
+    $current_theme = wp_get_theme()->get_stylesheet();
 
-    foreach ( $template_files as $file_path ) {
-        $filename = basename( $file_path, '.html' );
-        $contents = file_get_contents( $file_path );
-        $contents = str_replace( '~theme~', $theme->stylesheet, $contents );
+    $theme_dir = trailingslashit($base_dir . $current_theme);
 
-        $template = new WP_Block_Template();
-        $template->type           =  'wp_template';
-        $template->theme          = $theme->stylesheet;
-        $template->slug           = $filename;
-        $template->id             = "{$theme->stylesheet}//{$template_type}/{$filename}";
-        $template->title          = ucwords( str_replace( '-', ' ', $filename ) );
-        $template->description    = '';
-        $template->status         = 'publish';
-        $template->source         = 'custom';
-        $template->has_theme_file = true;
-        $template->is_custom      = true;
-        $template->content        = $contents;
+    if (!is_dir($theme_dir)) return;
 
-        $query_result[] = $template;
+    $iterator = new DirectoryIterator($theme_dir);
+
+    foreach ($iterator as $file) {
+        if ($file->isDot() || !$file->isFile() || $file->getExtension() !== 'html') continue;
+
+        $template_slug = pathinfo($file->getFilename(), PATHINFO_FILENAME);
+        $theme_slug = $current_theme;
+
+        $exists = get_posts([
+            'post_type'      => 'wp_template',
+            'post_status'    => 'publish',
+            'name'           => $template_slug,
+            'tax_query'      => [[
+                'taxonomy' => 'wp_theme',
+                'field'    => 'name',
+                'terms'    => $theme_slug,
+            ]],
+            'posts_per_page' => 1,
+        ]);
+
+        if (!empty($exists)) continue;
+
+        wp_insert_post([
+            'post_title'   => ucwords(str_replace(['-', '_'], ' ', $template_slug)),
+            'post_name'    => $template_slug,
+            'post_type'    => 'wp_template',
+            'post_status'  => 'publish',
+            'post_content' => file_get_contents($file->getPathname()),
+            'tax_input'    => [ 'wp_theme' => [ $theme_slug ] ],
+        ]);
     }
-
-    return $query_result;
 }
-add_filter( 'get_block_templates', 'manage_block_templates', 10, 3 );
+add_action('init', 'register_custom_templates');
