@@ -29,16 +29,17 @@ if (!$main_post) {
 		<!-- Row 2: Categories + Title, Date, Excerpt -->
 		<div class="row row-2">
 			<div class="col categories">
-			<?php
-				$categories = get_the_category( $main_post->ID );
-				if ( ! empty( $categories ) ) {
-				echo '<ul>';
-				foreach ( $categories as $category ) {
-					echo '<li>' . esc_html( $category -> name ) . '</li>';
-				}
-				echo '</ul>';
-				}
-			?>
+				<div class="category-heading">Categories: </div>
+				<?php
+					$categories = get_the_category( $main_post->ID );
+					if ( ! empty( $categories ) ) {
+					echo '<ul class="category-badges">';
+					foreach ( $categories as $category ) {
+						echo '<li class="category-badge">' . esc_html( $category -> name ) . '</li>';
+					}
+					echo '</ul>';
+					}
+				?>
 			</div>
 
 			<div class="col content">

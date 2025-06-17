@@ -62,9 +62,10 @@ export default function Edit() {
 				{/* Row 2: Categories + Title, Date, Excerpt */}
 				<div className="row row-2">
 					<div className="col categories">
-						<ul>
+						<div className="category-heading">Categories: </div>
+						<ul className="category-badges">
 							{categories.map((cat, i) => (
-								<li key={i}>{cat}</li>
+								<li className="category-badge">{cat}</li>
 							))}
 						</ul>
 					</div>

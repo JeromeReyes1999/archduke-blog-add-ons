@@ -54,7 +54,7 @@
 					.categories {
 						.category-badges {
               list-style: none;
-              padding: 0;
+              padding: 0 0 0.4rem 0;
               margin: 0;
               display: flex;
               flex-wrap: wrap;
@@ -63,10 +63,11 @@
 
             .category-badge {
               display: inline-block;
-              padding: 0.4em 0.2em;
+              padding: 5px 7px;
               font-size: 0.75rem;
               font-weight: 500;
               color: #333;
+              line-height: 1;
               background-color: #f0f0f0;
               border: 1px solid #ddd;
               border-radius: 999px;

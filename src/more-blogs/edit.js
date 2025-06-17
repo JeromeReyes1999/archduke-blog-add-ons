@@ -14,7 +14,7 @@ export default function Edit() {
 			const query = {
 				per_page: perPage,
 				status: 'publish',
-				offset: ((currentPage - 1) * 3) + 1,
+				offset: ((currentPage - 1) * perPage) + 1,
 				show_in_rest: true,
 				_embed: true,
 			};
@@ -90,12 +90,12 @@ export default function Edit() {
 											</ul>
 										</div>
 										<h2 className="title">{ title }</h2>
+										<div className="date">{ date }</div>
 										{ roundedReadTime !== null && (
 											<div className="read-time">
 												{roundedReadTime < 1 ? '< 1' : roundedReadTime} min read
 											</div>
 										)}
-										<div className="date">{ date }</div>
 										<div className="excerpt">{ excerpt }</div>
 									</div>
 								</a>

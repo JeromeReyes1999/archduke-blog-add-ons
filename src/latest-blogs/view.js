@@ -21,5 +21,5 @@
  */
 
 /* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-archduke-blog-add-ons block)' );
+// console.log( 'Hello World! (from create-block-archduke-blog-add-ons block)' );
 /* eslint-enable no-console */
