@@ -112,10 +112,9 @@ function archduke_blog_add_ons_backfill_read_time() {
 register_activation_hook( __FILE__, 'archduke_blog_add_ons_backfill_read_time' );
 
 function register_custom_templates() {
-    $base_dir = plugin_dir_path(__FILE__) . 'templates/';
     $current_theme = wp_get_theme()->get_stylesheet();
 
-    $theme_dir = trailingslashit($base_dir . $current_theme);
+    $theme_dir = plugin_dir_path( __FILE__ ) . 'themes/' . $current_theme . '/templates' . '/';
 
     if (!is_dir($theme_dir)) return;
 
@@ -151,4 +150,95 @@ function register_custom_templates() {
         ]);
     }
 }
+
 add_action('init', 'register_custom_templates');
+
+function archduke_apply_custom_theme_style( $theme_json ) {
+	$theme_slug = wp_get_theme()->get_stylesheet();
+
+    $variation_path = plugin_dir_path( __FILE__ ) . 'themes/' . $theme_slug . '/theme.json';
+
+	if ( ! file_exists( $variation_path ) ) {
+		return $theme_json;
+	}
+
+	$variation_json = file_get_contents( $variation_path );
+	$variation_data = json_decode( $variation_json, true );
+
+	if ( json_last_error() !== JSON_ERROR_NONE ) {
+		error_log( 'Invalid JSON in style variation.' );
+		return $theme_json;
+	}
+
+
+	$theme_json->update_with( $variation_data );
+
+	return $theme_json;
+}
+
+add_action( 'after_setup_theme', function () {
+	add_filter( 'wp_theme_json_data_theme', 'archduke_apply_custom_theme_style' );
+} );
+
+function my_custom_styles() {
+    $theme_slug = wp_get_theme()->get_stylesheet();
+    wp_enqueue_style(
+        'my-custom-style',
+        plugin_dir_url(__FILE__) . 'themes/' . $theme_slug . '/custom-style.css'
+    );
+}
+add_action('wp_enqueue_scripts', 'my_custom_styles');
+
+function parse_pattern_metadata($file_path) {
+    $contents = file_get_contents($file_path);
+    $metadata = [];
+
+    if (preg_match('#/\*\*(.*?)\*/#s', $contents, $match)) {
+        $raw_header = trim($match[1]);
+        $lines = explode("\n", $raw_header);
+
+        foreach ($lines as $line) {
+            $line = trim($line, " *\t\n\r\0\x0B");
+            if (strpos($line, ':') !== false) {
+                [$key, $value] = array_map('trim', explode(':', $line, 2));
+                $metadata[strtolower($key)] = $value;
+            }
+        }
+    }
+
+    return $metadata;
+}
+
+add_action('init', function () {
+    $theme_slug   = wp_get_theme()->get_stylesheet();
+    $patterns_dir = plugin_dir_path(__FILE__) . 'themes/' . $theme_slug . '/patterns/';
+
+    if (!is_dir($patterns_dir)) return;
+
+    foreach (new DirectoryIterator($patterns_dir) as $file) {
+        if ($file->isDot() || !$file->isFile() || $file->getExtension() !== 'php') continue;
+
+        $file_path = $file->getPathname();
+
+        $headers = get_file_data($file_path, [
+            'title'         => 'Title',
+            'slug'          => 'Slug',
+            'categories'    => 'Categories',
+        ]);
+
+        if (empty($headers['slug']) || empty($headers['title'])) continue;
+
+        unregister_block_pattern($headers['slug']);
+
+        ob_start();
+        include $file_path;
+        $pattern_content = ob_get_clean();
+
+        register_block_pattern($headers['slug'], [
+            'title'         => $headers['title'],
+            'slug'          => $headers['slug'],
+            'categories'    => array_map('trim', explode(',', $headers['categories'] ?? 'uncategorized')),
+            'content'       => $pattern_content
+        ]);
+    }
+});

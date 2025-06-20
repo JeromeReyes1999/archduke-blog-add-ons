@@ -1,0 +1,21 @@
+header.wp-block-template-part .wp-block-navigation-item.wp-block-navigation-link {
+  color: var(--wp--preset--color--primary);
+}
+header.wp-block-template-part .wp-block-navigation-item.wp-block-navigation-link:hover {
+  color: var(--wp--preset--color--primary-hover);
+}
+header.wp-block-template-part .wp-block-button a.wp-block-button__link {
+  border-color: var(--wp--preset--color--primary-hover);
+}
+.wp-block-button__link.has-contrast-light-color.has-text-color.has-border-color.has-contrast-light-border-color.wp-element-button:hover {
+  border-color: var(--wp--preset--color--primary-hover) !important;
+  background-color: var(--wp--preset--color--primary-hover) !important;
+}
+.wp-block-button__link.has-contrast-dark-color.has-contrast-light-background-color.has-text-color.has-background.wp-element-button:hover {
+  border-color: var(--wp--preset--color--primary-hover) !important;
+  background-color: var(--wp--preset--color--primary-hover) !important;
+}
+:root :where(p) {
+  line-height: calc(25/17);
+  word-spacing: -0.022em;
+}
