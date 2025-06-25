@@ -114,7 +114,7 @@ register_activation_hook( __FILE__, 'archduke_blog_add_ons_backfill_read_time' )
 function register_custom_templates() {
     $current_theme = wp_get_theme()->get_stylesheet();
 
-    $theme_dir = plugin_dir_path( __FILE__ ) . 'themes/' . $current_theme . '/templates' . '/';
+    $theme_dir = plugin_dir_path( __FILE__ ) . 'themes/' . $current_theme . '/templates/';
 
     if (!is_dir($theme_dir)) return;
 
@@ -155,8 +155,7 @@ add_action('init', 'register_custom_templates');
 
 function archduke_apply_custom_theme_style( $theme_json ) {
 	$theme_slug = wp_get_theme()->get_stylesheet();
-
-    $variation_path = plugin_dir_path( __FILE__ ) . 'themes/' . $theme_slug . '/theme.json';
+	$variation_path = plugin_dir_path( __FILE__ ) . 'themes/' . $theme_slug . '/theme.json';
 
 	if ( ! file_exists( $variation_path ) ) {
 		return $theme_json;
@@ -170,6 +169,24 @@ function archduke_apply_custom_theme_style( $theme_json ) {
 		return $theme_json;
 	}
 
+	// Resolve plugin_file: paths
+	$plugin_url = plugin_dir_url( __FILE__ );
+	if ( isset( $variation_data['settings']['typography']['fontFamilies'] ) ) {
+		foreach ( $variation_data['settings']['typography']['fontFamilies'] as &$font ) {
+			if ( isset( $font['fontFace'] ) ) {
+				foreach ( $font['fontFace'] as &$face ) {
+					if ( isset( $face['src'] ) && is_array( $face['src'] ) ) {
+						foreach ( $face['src'] as &$src ) {
+							if ( str_starts_with( $src, 'plugin_file:./' ) ) {
+								$relative_path = substr( $src, strlen( 'plugin_file:./' ) );
+								$src = $plugin_url . ltrim( $relative_path, '/' );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	$theme_json->update_with( $variation_data );
 

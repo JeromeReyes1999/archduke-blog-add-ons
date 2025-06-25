@@ -1,7 +1,7 @@
-header.wp-block-template-part .wp-block-navigation-item.wp-block-navigation-link {
+header.wp-block-template-part .wp-block-navigation-item {
   color: var(--wp--preset--color--primary);
 }
-header.wp-block-template-part .wp-block-navigation-item.wp-block-navigation-link:hover {
+header.wp-block-template-part .wp-block-navigation-item:hover {
   color: var(--wp--preset--color--primary-hover);
 }
 header.wp-block-template-part .wp-block-button a.wp-block-button__link {
@@ -18,4 +18,7 @@ header.wp-block-template-part .wp-block-button a.wp-block-button__link {
 :root :where(p) {
   line-height: calc(25/17);
   word-spacing: -0.022em;
+}
+.hide {
+  display: none !important;
 }

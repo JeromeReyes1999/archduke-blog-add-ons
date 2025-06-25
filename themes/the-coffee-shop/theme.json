@@ -147,21 +147,21 @@
               "fontStretch": "normal",
               "fontStyle": "normal",
               "fontWeight": "400",
-              "src": ["file:./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wdth,wght.ttf"]
+              "src": ["plugin_file:./themes/the-coffee-shop/assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf"]
             },
             {
               "fontFamily": "Open Sans",
               "fontStretch": "normal",
               "fontStyle": "semibold",
               "fontWeight": "600",
-              "src": ["file:./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wdth,wght.ttf"]
+              "src": ["plugin_file:./themes/the-coffee-shop/assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf"]
             },
             {
               "fontFamily": "Open Sans",
               "fontStretch": "normal",
               "fontStyle": "bold",
               "fontWeight": "700",
-              "src": ["file:./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wdth,wght.ttf"]
+              "src": ["plugin_file:./themes/the-coffee-shop/assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf"]
             }
           ],
           "fontFamily": "'SF Pro Display',\"Plus Jakarta Sans\", sans-serif",
@@ -175,14 +175,14 @@
               "fontStretch": "normal",
               "fontStyle": "normal",
               "fontWeight": "600",
-              "src": ["file:./assets/fonts/Inter/Inter-VariableFont_wght.ttf"]
+              "src": ["plugin_file:./themes/the-coffee-shop/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf"]
             },
             {
               "fontFamily": "Inter",
               "fontStretch": "normal",
               "fontStyle": "normal",
               "fontWeight": "600",
-              "src": ["file:./assets/fonts/Inter/Inter-VariableFont_wght.ttf"]
+              "src": ["plugin_file:./themes/the-coffee-shop/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf"]
             }
           ],
           "fontFamily": "'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif",
@@ -211,25 +211,25 @@
         },
         {
           "fluid": {
-            "min": "16px",
-            "max": "16px"
+            "min": "17px",
+            "max": "17px"
           },
           "name": "XSmall",
-          "size": "16px",
+          "size": "17px",
           "slug": "superbfont-xsmall"
         },
         {
           "fluid": {
-            "min": "17px",
-            "max": "17px"
+            "min": "18px",
+            "max": "18px"
           },
           "name": "Small",
-          "size": "17px",
+          "size": "18px",
           "slug": "superbfont-small"
         },
         {
           "fluid": {
-            "min": "18px",
+            "min": "19px",
             "max": "20px"
           },
           "name": "Medium",

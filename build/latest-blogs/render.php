@@ -29,11 +29,10 @@ if (!$main_post) {
 		<!-- Row 2: Categories + Title, Date, Excerpt -->
 		<div class="row row-2">
 			<div class="col categories">
-				<div class="category-heading">Categories: </div>
 				<?php
 					$categories = get_the_category( $main_post->ID );
 					if ( ! empty( $categories ) ) {
-					echo '<ul class="category-badges">';
+					echo '<ul class="category-badges has-text-color has-superbfont-xxsmall-font-size">';
 					foreach ( $categories as $category ) {
 						echo '<li class="category-badge">' . esc_html( $category -> name ) . '</li>';
 					}
@@ -43,22 +42,22 @@ if (!$main_post) {
 			</div>
 
 			<div class="col content">
-				<h2 class="title">
+				<h2 class="title has-text-align-left has-primary-color has-superbfont-large-font-size">
 					<a href="<?php echo esc_url( get_permalink( $main_post->ID ) ); ?>">
 					<?php echo esc_html( get_the_title( $main_post->ID ) ); ?>
 					</a>
 				</h2>
-				<div class="date"><?php echo esc_html( get_the_date( '', $main_post->ID ) ); ?></div>
+				<div class="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size"><?php echo esc_html( get_the_date( '', $main_post->ID ) ); ?></div>
 				<?php
                     $read_time = get_post_meta($main_post->ID, 'read_time', true);
 					if ($read_time !== '') {
 						$rounded = round(floatval($read_time), 0);
-						echo '<div class="read-time">' . esc_html($rounded < 1 ? '< 1' : $rounded) . ' min read</div>';
+						echo '<p class="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">' . esc_html($rounded < 1 ? '< 1' : $rounded) . ' min read</p>';
 					}
 				?>
 				<div class="excerpt">
                     <?php  $excerpt = wp_kses_post(str_replace( '[&hellip;]', '', get_the_excerpt( $main_post->ID )));
-                        echo '<p>' . $excerpt . ' <a  class="read-more-link" href="' . esc_url( get_permalink( $main_post->ID ) ) . '">Read more →</a></p>';
+                        echo '<p class="has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">' . $excerpt . '...  <a  class="read-more-link" href="' . esc_url( get_permalink( $main_post->ID ) ) . '">Read more →</a></p>';
                     ?>
                 </div>
 			</div>

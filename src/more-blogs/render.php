@@ -32,7 +32,7 @@ $total_pages = ceil($total_posts / $per_page);
 				</div>
 
 				<div class="post-body">
-					<div class="categories">
+					<div class="categories has-text-color has-superbfont-xxsmall-font-size">
 						<?php
 							$categories = get_the_category( $post->ID );
 							if ( ! empty( $categories ) ) {
@@ -44,16 +44,20 @@ $total_pages = ceil($total_posts / $per_page);
 							}
 						?>
 					</div>
-					<h2 class="title"><?php echo get_the_title( $post->ID ) ?></h2>
+					<h2 class="title has-primary-color has-superbfont-medium-font-size"><?php echo get_the_title( $post->ID ) ?></h2>
+					<p class="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
+						<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
+					</p>
 					<?php
 						$read_time = get_post_meta($post->ID, 'read_time', true);
 						if ($read_time !== '') {
 							$rounded = round(floatval($read_time), 0);
-							echo '<div class="read-time">' . esc_html($rounded < 1 ? '< 1' : $rounded) . ' min read</div>';
+							echo '<p class="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">' . esc_html($rounded < 1 ? '< 1' : $rounded) . ' min read</p>';
 						}
 					?>
-					<div class="date"><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></div>
-					<div class="excerpt"><?php echo wp_kses_post( wp_trim_words( get_the_excerpt( $post->ID ), 20) ) ?></div>
+					<p class="excerpt has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
+						<?php echo wp_kses_post( wp_trim_words( get_the_excerpt( $post->ID ), 20) ) ?>
+					</p>
 				</div>
 			</a>
 			</article>

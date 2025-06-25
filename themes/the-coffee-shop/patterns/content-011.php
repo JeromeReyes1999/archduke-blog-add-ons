@@ -33,7 +33,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"fontSize":"superbfont-small"} -->
-<p class="has-superbfont-small-font-size has-primary-hover-color"><a href="#">Read more →</a></p>
+<p class="has-superbfont-small-font-size has-primary-hover-color read-more-link"><a href="#">Read more →</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column -->
@@ -55,7 +55,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"fontSize":"superbfont-small"} -->
-<p class="has-superbfont-small-font-size has-primary-hover-color"><a href="#">Read more →</a></p>
+<p class="has-superbfont-small-font-size has-primary-hover-color read-more-link"><a href="#">Read more →</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column -->
@@ -71,13 +71,13 @@
 <h3 class="wp-block-heading has-text-align-left has-contrast-color has-text-color has-superbfont-medium-font-size">PREMIUM COFFEE BEANS</h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
-
+   
 <!-- wp:paragraph {"align":"left","style":{"spacing":{"margin":{"top":"var:preset|spacing|superbspacing-xxsmall","bottom":"var:preset|spacing|superbspacing-xxsmall"}}},"textColor":"mono-2","fontSize":"superbfont-xsmall"} -->
 <p class="has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size" style="margin-top:var(--wp--preset--spacing--superbspacing-xxsmall);margin-bottom:var(--wp--preset--spacing--superbspacing-xxsmall)">Etiam placerat velit vitae dui blandit sollicitudin. Vestibulum tincidunt sed dolor sit amet volutpat. Nullam egestas sem at mollis sodales. Nunc eget lacinia eros, ut tincidunt nunc. Quisque volutpat, enim id volutpat interdum, purus odio euismod neque.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"fontSize":"superbfont-small"} -->
-<p class="has-superbfont-small-font-size has-primary-hover-color"><a href="#">Read more →</a></p>
+<p class="has-superbfont-small-font-size has-primary-hover-color read-more-link"><a href="#">Read more →</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>

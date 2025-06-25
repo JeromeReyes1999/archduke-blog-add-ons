@@ -62,8 +62,7 @@ export default function Edit() {
 				{/* Row 2: Categories + Title, Date, Excerpt */}
 				<div className="row row-2">
 					<div className="col categories">
-						<div className="category-heading">Categories: </div>
-						<ul className="category-badges">
+						<ul className="category-badges has-text-color has-superbfont-xxsmall-font-size">
 							{categories.map((cat, i) => (
 								<li className="category-badge">{cat}</li>
 							))}
@@ -71,20 +70,20 @@ export default function Edit() {
 					</div>
 
 					<div className="col content">
-						<h2 className="title">
+						<h2 className="title has-text-align-left has-primary-color has-superbfont-large-font-size">
 							<a href={link} target="_blank" rel="noopener noreferrer">
 								{title}
 							</a>
 						</h2>
 						<div className="date">{date}</div>
 						{roundedReadTime !== null && (
-							<div className="read-time">
+							<p className="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
 								{roundedReadTime < 1 ? '< 1' : roundedReadTime} min read
-							</div>
+							</p>
 						)}
 						<div className="excerpt">
-							<p>
-								{plainExcerpt}{' '}
+							<p className="has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
+								{plainExcerpt}{'... '}
 								<a
 									className="read-more-link"
 									href={link}

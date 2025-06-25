@@ -82,28 +82,28 @@ export default function Edit() {
 										</div>
 									) }
 									<div className="post-body">
-										<div className="categories">
+										<div className="categories has-text-color has-superbfont-xxsmall-font-size">
 											<ul className="category-badges">
 												{ categories.map( ( cat, i ) => (
 													<li className="category-badge">{ cat }</li>
 												) ) }
 											</ul>
 										</div>
-										<h2 className="title">{ title }</h2>
-										<div className="date">{ date }</div>
+										<h2 className="title has-primary-color has-superbfont-medium-font-size">{ title }</h2>
+										<div className="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">{ date }</div>
 										{ roundedReadTime !== null && (
-											<div className="read-time">
+											<p className="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xxsmall-font-size">
 												{roundedReadTime < 1 ? '< 1' : roundedReadTime} min read
-											</div>
+											</p>
 										)}
-										<div className="excerpt">{ excerpt }</div>
+										<p className="excerpt has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">{ excerpt }</p>
 									</div>
 								</a>
 							</article>
 						);
 					} ) }
 				</div>
-
+			{ totalPages > 1 && (
 				<ul className="page-numbers">
 					<li>
 						<Button
@@ -136,6 +136,7 @@ export default function Edit() {
 						</Button>
 					</li>
 				</ul>
+			) }
 			</div>
 		</div>
 	);
