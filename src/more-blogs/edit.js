@@ -49,7 +49,7 @@ export default function Edit() {
 	return (
 		<div { ...blockProps }>
 			<div className="more-posts">
-				<h2 className="grid-title">Discover More</h2>
+				<h2 className="grid-title wp-block-heading">Discover More</h2>
 				<div className="post-grid">
 					{ posts.map( ( post ) => {
 						const title = post.title?.rendered || '(No title)';
@@ -89,7 +89,7 @@ export default function Edit() {
 												) ) }
 											</ul>
 										</div>
-										<h2 className="title has-primary-color has-superbfont-medium-font-size">{ title }</h2>
+										<h2 className="wp-block-heading title has-primary-color has-superbfont-medium-font-size">{ title }</h2>
 										<div className="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">{ date }</div>
 										{ roundedReadTime !== null && (
 											<p className="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xxsmall-font-size">

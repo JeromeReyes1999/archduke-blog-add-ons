@@ -1,0 +1,35 @@
+<!-- wp:template-part {"slug":"header","theme":"the-coffee-shop","tagName":"header"} /-->
+<!-- wp:group {
+  "layout": { "type": "default" },
+  "style": {
+    "spacing": {
+      "margin": { "top": "0" },
+      "padding": {
+        "top": "1.25em",
+        "right": "0",
+        "bottom": "0",
+        "left": "0"
+      }
+    },
+    "color": { "background": "#fff" }
+  }
+} -->
+<div class="wp-block-group has-background" style="background-color:#fff;margin-top:0;padding-top:1.25em;padding-right:0;padding-bottom:0;padding-left:0;">
+    <!-- wp:group {"layout":{"type":"constrained","contentSize":"1250px"}} --> 
+    <div class="wp-block-group">
+        <!-- wp:create-block/latest-blogs /-->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:group {"layout":{"type":"default"}, "style":{"color":{"background":"#F0F3F8"}}} -->
+    <div class="wp-block-group has-background" style="background-color: #F0F3F8">
+        <!-- wp:group {"layout":{"type":"constrained"}} -->
+        <div class="wp-block-group">
+            <!-- wp:create-block/more-blogs /-->
+        </div>
+        <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","theme":"the-coffee-shop","area":"footer"} /-->

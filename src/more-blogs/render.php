@@ -17,7 +17,7 @@ $total_pages = ceil($total_posts / $per_page);
 
 <div <?php echo get_block_wrapper_attributes(); ?>>
 	<div class="more-posts">
-		<h2 class='grid-title'>Discover More</h2>
+		<h2 class='grid-title wp-block-heading'>Discover More</h2>
 		<div class="post-grid">
 		<?php foreach ($more_posts as $post): setup_postdata($post); ?>
 			<article class="post-card">
@@ -44,7 +44,7 @@ $total_pages = ceil($total_posts / $per_page);
 							}
 						?>
 					</div>
-					<h2 class="title has-primary-color has-superbfont-medium-font-size"><?php echo get_the_title( $post->ID ) ?></h2>
+					<h2 class="wp-block-heading title has-primary-color has-superbfont-medium-font-size"><?php echo get_the_title( $post->ID ) ?></h2>
 					<p class="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
 						<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
 					</p>

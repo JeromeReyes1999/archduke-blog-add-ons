@@ -22,3 +22,19 @@ header.wp-block-template-part .wp-block-button a.wp-block-button__link {
 .hide {
   display: none !important;
 }
+header .superbthemes-navigation-004-columns-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+header 
+   .superbthemes-navigation-004-columns-nav {
+  flex-basis: 100% !important;
+}
+header ul.wp-block-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px
+}
+footer {
+  border-top-color: var(--wp--preset--color--mono-4);
+}

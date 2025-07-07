@@ -42,7 +42,7 @@ if (!$main_post) {
 			</div>
 
 			<div class="col content">
-				<h2 class="title has-text-align-left has-primary-color has-superbfont-large-font-size">
+				<h2 class="wp-block-heading title has-text-align-left has-primary-color has-superbfont-large-font-size">
 					<a href="<?php echo esc_url( get_permalink( $main_post->ID ) ); ?>">
 					<?php echo esc_html( get_the_title( $main_post->ID ) ); ?>
 					</a>

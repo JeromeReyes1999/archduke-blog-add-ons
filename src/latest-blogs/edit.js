@@ -70,12 +70,12 @@ export default function Edit() {
 					</div>
 
 					<div className="col content">
-						<h2 className="title has-text-align-left has-primary-color has-superbfont-large-font-size">
+						<h2 className="wp-block-heading title has-text-align-left has-primary-color has-superbfont-large-font-size">
 							<a href={link} target="_blank" rel="noopener noreferrer">
 								{title}
 							</a>
 						</h2>
-						<div className="date">{date}</div>
+						<div className="date has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">{date}</div>
 						{roundedReadTime !== null && (
 							<p className="read-time has-text-align-left has-mono-2-color has-text-color has-superbfont-xsmall-font-size">
 								{roundedReadTime < 1 ? '< 1' : roundedReadTime} min read
